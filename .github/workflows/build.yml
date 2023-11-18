@@ -24,7 +24,6 @@ jobs:
 
       - name: Build Image
         run: |
-          cd app
-          docker build -t peteracr007.azurecr.io/app-node .
+          docker build -t peteracr007.azurecr.io/app-node -f /app/Dockerfile  .
           docker image ls
       # ...
