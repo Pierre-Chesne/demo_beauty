@@ -22,5 +22,8 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # Add your build steps here
+      - name: Build Image
+        run: |
+          docker build -t peteracr007.azurecr.io/app-node -f /app .
+          docker image ls
       # ...
