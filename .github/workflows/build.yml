@@ -27,4 +27,8 @@ jobs:
           cd app
           docker build -t peteracr007.azurecr.io/app-node .
           docker image ls
-      # ...
+    
+      - name: Scan Image
+        uses: crazy-max/ghaction-container-scan@v3
+        with:
+          peteracr007.azurecr.io/app-node:latest
