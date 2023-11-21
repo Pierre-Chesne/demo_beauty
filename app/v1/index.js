@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const PORT = 3000;
 const os = require('os');
 const requestIp = require('request-ip');
 const hostname = os.hostname();
 const { Client } = require('pg');
 const dotenv = require('dotenv');
+const PORT = 3000
 
 app.use(morgan('tiny'));
 app.use(requestIp.mw())
@@ -90,9 +90,9 @@ app.post('/ok/reset', (req, res) => {
 })
 
 
-
 // Expose Express sur le port 3000
 app.listen(PORT, function (err) {
   if (err) console.log(err);
   console.log("Express ecoute sur le port", PORT);
 });
+
