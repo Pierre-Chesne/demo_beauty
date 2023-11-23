@@ -1,11 +1,11 @@
-name: New Revision
+name: 2. Revision - Lab_9
 
 on:
   workflow_dispatch:
 
 env:
-  RESOURCE_GROUP: rg_demo_aca
-  ACR_NAME: peteracr007
+  RESOURCE_GROUP: RG_Lab_9
+  ACR_NAME: acrlab9
   APPLICATION: hello-aca
   REV_APPLICATION: rev-02
   VERSION_2_APPLICATION: 2.0.0
@@ -16,16 +16,16 @@ jobs:
 
     steps:
 
-      
-      -  uses: actions/checkout@v3
+      - name: Checkout du Repo
+        uses: actions/checkout@v3
     
-      
-      - uses: azure/login@v1
+      - name: Login to Azure
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      
-      -  uses: Azure/aca-review-apps@v0.2.0
+      - name: Add revision to ACA
+        uses: Azure/aca-review-apps@v0.2.0
         id: aca_new_revision
         with:
           resource-group: ${{ env.RESOURCE_GROUP }}
