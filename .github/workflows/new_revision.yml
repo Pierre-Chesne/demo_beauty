@@ -1,0 +1,34 @@
+name: New Revision
+
+on:
+  workflow_dispatch:
+
+env:
+  RESOURCE_GROUP: rg_demo_aca
+  ACR_NAME: peteracr007
+  APPLICATION: hello-aca
+  REV_APPLICATION: rev-02
+  VERSION_2_APPLICATION: 2.0.0
+
+jobs:
+  New-Revision-Application:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout du Repo
+        uses: actions/checkout@v3
+    
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Add revision to ACA
+        uses: Azure/aca-review-apps@v0.2.0
+        id: aca_new_revision
+        with:
+          resource-group: ${{ env.RESOURCE_GROUP }}
+          name: ${{ env.APPLICATION }}
+          revision-name-suffix: ${{ env.REV_APPLICATION }}
+          image: ${{ env.ACR_NAME }}.azurecr.io/${{ env.APPLICATION }}:${{ env.VERSION_2_APPLICATION }}
