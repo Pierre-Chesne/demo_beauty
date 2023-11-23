@@ -1,14 +1,8 @@
-name: 2. Revision - Lab_9
+name: Revision
 
 on:
   workflow_dispatch:
 
-env:
-  RESOURCE_GROUP: RG_Lab_9
-  ACR_NAME: acrlab9
-  APPLICATION: hello-aca
-  REV_APPLICATION: rev-02
-  VERSION_2_APPLICATION: 2.0.0
 
 jobs:
   New-Revision-Application:
@@ -24,11 +18,3 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Add revision to ACA
-        uses: Azure/aca-review-apps@v0.2.0
-        id: aca_new_revision
-        with:
-          resource-group: ${{ env.RESOURCE_GROUP }}
-          name: ${{ env.APPLICATION }}
-          revision-name-suffix: ${{ env.REV_APPLICATION }}
-          image: ${{ env.ACR_NAME }}.azurecr.io/${{ env.APPLICATION }}:${{ env.VERSION_2_APPLICATION }}
