@@ -16,16 +16,16 @@ jobs:
 
     steps:
 
-      - name: Checkout du Repo
-        uses: actions/checkout@v3
+      
+      -  uses: actions/checkout@v3
     
-      - name: Login to Azure
-        uses: azure/login@v1
+      
+      - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Add revision to ACA
-        uses: Azure/aca-review-apps@v0.2.0
+      
+      -  uses: Azure/aca-review-apps@v0.2.0
         id: aca_new_revision
         with:
           resource-group: ${{ env.RESOURCE_GROUP }}
