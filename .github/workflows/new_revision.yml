@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  RESOURCE_GROUP: rg_demo_aca
+  RESOURCE_GROUP: rg_demo_beauty_aca
   ACR_NAME: peteracr007
   APPLICATION: hello-aca
   REV_APPLICATION: rev-02
